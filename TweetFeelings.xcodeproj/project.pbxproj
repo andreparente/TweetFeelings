@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F405AEA527078BF600DE3834 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEA427078BF600DE3834 /* TweetCell.swift */; };
+		F405AEA727078CA300DE3834 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEA627078CA300DE3834 /* Reusable.swift */; };
+		F405AEA927078D8D00DE3834 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEA827078D8D00DE3834 /* Tweet.swift */; };
+		F405AEAC2707920500DE3834 /* TweetCellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEAB2707920500DE3834 /* TweetCellBuilder.swift */; };
+		F405AEAE270792EB00DE3834 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEAD270792EB00DE3834 /* Collection+Extensions.swift */; };
+		F405AEB02707A15600DE3834 /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEAF2707A15600DE3834 /* GoogleAPI.swift */; };
+		F43C2B00270780D200B6B7C0 /* ViewCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43C2AFF270780D200B6B7C0 /* ViewCodable.swift */; };
+		F43C2B032707811100B6B7C0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F43C2B022707811100B6B7C0 /* SnapKit */; };
 		F447773A2707414600D0FC7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44777392707414600D0FC7B /* AppDelegate.swift */; };
 		F447773E2707414600D0FC7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447773D2707414600D0FC7B /* ViewController.swift */; };
 		F44777432707414700D0FC7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44777422707414700D0FC7B /* Assets.xcassets */; };
@@ -45,6 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F405AEA427078BF600DE3834 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
+		F405AEA627078CA300DE3834 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		F405AEA827078D8D00DE3834 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		F405AEAB2707920500DE3834 /* TweetCellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellBuilder.swift; sourceTree = "<group>"; };
+		F405AEAD270792EB00DE3834 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
+		F405AEAF2707A15600DE3834 /* GoogleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		F43C2AFF270780D200B6B7C0 /* ViewCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodable.swift; sourceTree = "<group>"; };
 		F44777362707414600D0FC7B /* TweetFeelings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetFeelings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44777392707414600D0FC7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F447773D2707414600D0FC7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F447789627074CC300D0FC7B /* Reachability in Frameworks */,
+				F43C2B032707811100B6B7C0 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +110,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F405AEA027078B7000DE3834 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				F405AEA127078B7900DE3834 /* Feed */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		F405AEA127078B7900DE3834 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				F4477965270757DE00D0FC7B /* View */,
+				F44779622707562100D0FC7B /* ViewController */,
+				F405AEA227078B9100DE3834 /* ViewModel */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		F405AEA227078B9100DE3834 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F4477960270755BF00D0FC7B /* TweetsFeedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F405AEA327078BAA00DE3834 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F44777442707414700D0FC7B /* LaunchScreen.storyboard */,
+				F44777472707414700D0FC7B /* Info.plist */,
+				F44777422707414700D0FC7B /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F405AEAA270791F600DE3834 /* TweetCell */ = {
+			isa = PBXGroup;
+			children = (
+				F405AEA427078BF600DE3834 /* TweetCell.swift */,
+				F405AEAB2707920500DE3834 /* TweetCellBuilder.swift */,
+			);
+			path = TweetCell;
+			sourceTree = "<group>";
+		};
+		F43C2AFE270780C600B6B7C0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F43C2AFF270780D200B6B7C0 /* ViewCodable.swift */,
+				F405AEA627078CA300DE3834 /* Reusable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		F447772D2707414500D0FC7B = {
 			isa = PBXGroup;
 			children = (
@@ -117,16 +187,13 @@
 		F44777382707414600D0FC7B /* TweetFeelings */ = {
 			isa = PBXGroup;
 			children = (
-				F4477965270757DE00D0FC7B /* View */,
-				F44779622707562100D0FC7B /* ViewController */,
-				F447795A27074EE100D0FC7B /* Extensions */,
-				F447776927074ABC00D0FC7B /* Network */,
+				F405AEA327078BAA00DE3834 /* Assets */,
 				F44777392707414600D0FC7B /* AppDelegate.swift */,
+				F447795A27074EE100D0FC7B /* Extensions */,
+				F405AEA027078B7000DE3834 /* Flows */,
+				F447776927074ABC00D0FC7B /* Network */,
+				F43C2AFE270780C600B6B7C0 /* Protocols */,
 				F447773D2707414600D0FC7B /* ViewController.swift */,
-				F44777422707414700D0FC7B /* Assets.xcassets */,
-				F44777442707414700D0FC7B /* LaunchScreen.storyboard */,
-				F44777472707414700D0FC7B /* Info.plist */,
-				F4477960270755BF00D0FC7B /* TweetsFeedViewModel.swift */,
 			);
 			path = TweetFeelings;
 			sourceTree = "<group>";
@@ -181,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				F44777FA27074B1E00D0FC7B /* TwitterAPI.swift */,
+				F405AEAF2707A15600DE3834 /* GoogleAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -205,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				F447795B27074EFC00D0FC7B /* NSNotification+Extensions.swift */,
+				F405AEAD270792EB00DE3834 /* Collection+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				F447795E2707501C00D0FC7B /* UserIDResponse.swift */,
+				F405AEA827078D8D00DE3834 /* Tweet.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -228,6 +298,7 @@
 		F4477965270757DE00D0FC7B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F405AEAA270791F600DE3834 /* TweetCell */,
 				F4477966270757E800D0FC7B /* FeedView.swift */,
 			);
 			path = View;
@@ -251,6 +322,7 @@
 			name = TweetFeelings;
 			packageProductDependencies = (
 				F447789527074CC300D0FC7B /* Reachability */,
+				F43C2B022707811100B6B7C0 /* SnapKit */,
 			);
 			productName = TweetFeelings;
 			productReference = F44777362707414600D0FC7B /* TweetFeelings.app */;
@@ -326,6 +398,7 @@
 			mainGroup = F447772D2707414500D0FC7B;
 			packageReferences = (
 				F447789427074CC300D0FC7B /* XCRemoteSwiftPackageReference "Reachability" */,
+				F43C2B012707811100B6B7C0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = F44777372707414600D0FC7B /* Products */;
 			projectDirPath = "";
@@ -370,17 +443,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				F447795927074D5700D0FC7B /* NetworkManagerProtocol.swift in Sources */,
+				F405AEA527078BF600DE3834 /* TweetCell.swift in Sources */,
 				F447781627074B1E00D0FC7B /* ReachabilityManager.swift in Sources */,
 				F447773E2707414600D0FC7B /* ViewController.swift in Sources */,
 				F447773A2707414600D0FC7B /* AppDelegate.swift in Sources */,
 				F4477967270757E800D0FC7B /* FeedView.swift in Sources */,
+				F43C2B00270780D200B6B7C0 /* ViewCodable.swift in Sources */,
+				F405AEAC2707920500DE3834 /* TweetCellBuilder.swift in Sources */,
 				F447781227074B1E00D0FC7B /* NetworkManager.swift in Sources */,
 				F44779642707563100D0FC7B /* TweetsFeedViewController.swift in Sources */,
+				F405AEA727078CA300DE3834 /* Reusable.swift in Sources */,
 				F447795C27074EFC00D0FC7B /* NSNotification+Extensions.swift in Sources */,
 				F447795F2707501C00D0FC7B /* UserIDResponse.swift in Sources */,
+				F405AEB02707A15600DE3834 /* GoogleAPI.swift in Sources */,
 				F447788327074B1E00D0FC7B /* TwitterAPI.swift in Sources */,
 				F4477961270755BF00D0FC7B /* TweetsFeedViewModel.swift in Sources */,
 				F447789227074B1E00D0FC7B /* TwitterService.swift in Sources */,
+				F405AEA927078D8D00DE3834 /* Tweet.swift in Sources */,
+				F405AEAE270792EB00DE3834 /* Collection+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +633,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C5676RKFWG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TweetFeelings/Info.plist;
+				INFOPLIST_FILE = TweetFeelings/Assets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -580,7 +660,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C5676RKFWG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TweetFeelings/Info.plist;
+				INFOPLIST_FILE = TweetFeelings/Assets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -736,6 +816,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F43C2B012707811100B6B7C0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		F447789427074CC300D0FC7B /* XCRemoteSwiftPackageReference "Reachability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
@@ -747,6 +835,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F43C2B022707811100B6B7C0 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F43C2B012707811100B6B7C0 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		F447789527074CC300D0FC7B /* Reachability */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F447789427074CC300D0FC7B /* XCRemoteSwiftPackageReference "Reachability" */;

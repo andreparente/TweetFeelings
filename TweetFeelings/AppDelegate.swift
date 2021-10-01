@@ -6,10 +6,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var networkManager = NetworkManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = TweetsFeedViewController(viewModel: TweetsFeedViewModel(service: TwitterService(networkManager: networkManager)))
-        window?.makeKeyAndVisible()
+        setupProject()
         return true
+    }
+    
+    private func setupProject() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let viewModel = TweetsFeedViewModel(service: TwitterService(networkManager: networkManager))
+        let feedViewController = TweetsFeedViewController(viewModel: viewModel)
+        viewModel.controllerDelegate = feedViewController
+        window?.rootViewController = feedViewController
+        window?.makeKeyAndVisible()
     }
 }
 

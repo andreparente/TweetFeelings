@@ -2,7 +2,7 @@ import UIKit
 
 class TweetsFeedViewController: UIViewController {
     
-    weak var viewModel: TweetsFeedViewModelInterface?
+    private var viewModel: TweetsFeedViewModelInterface?
     private var feedView = FeedView()
     
     init(viewModel: TweetsFeedViewModelInterface) {
@@ -21,6 +21,6 @@ class TweetsFeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel?.fetchTweetsFrom(username: "whindersson")
     }
 }

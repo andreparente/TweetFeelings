@@ -16,7 +16,7 @@
 		F447775D2707414700D0FC7B /* TweetFeelingsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447775C2707414700D0FC7B /* TweetFeelingsUITestsLaunchTests.swift */; };
 		F447781227074B1E00D0FC7B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447777227074B1D00D0FC7B /* NetworkManager.swift */; };
 		F447781627074B1E00D0FC7B /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447777827074B1D00D0FC7B /* ReachabilityManager.swift */; };
-		F447788327074B1E00D0FC7B /* MenuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44777FA27074B1E00D0FC7B /* MenuAPI.swift */; };
+		F447788327074B1E00D0FC7B /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44777FA27074B1E00D0FC7B /* TwitterAPI.swift */; };
 		F447789227074B1E00D0FC7B /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447780C27074B1E00D0FC7B /* TwitterService.swift */; };
 		F447789627074CC300D0FC7B /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = F447789527074CC300D0FC7B /* Reachability */; };
 		F447795927074D5700D0FC7B /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F447795827074D5700D0FC7B /* NetworkManagerProtocol.swift */; };
@@ -58,7 +58,7 @@
 		F447775C2707414700D0FC7B /* TweetFeelingsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetFeelingsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F447777227074B1D00D0FC7B /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F447777827074B1D00D0FC7B /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
-		F44777FA27074B1E00D0FC7B /* MenuAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuAPI.swift; sourceTree = "<group>"; };
+		F44777FA27074B1E00D0FC7B /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		F447780C27074B1E00D0FC7B /* TwitterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
 		F447795827074D5700D0FC7B /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		F447795B27074EFC00D0FC7B /* NSNotification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extensions.swift"; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		F44777F627074B1E00D0FC7B /* API */ = {
 			isa = PBXGroup;
 			children = (
-				F44777FA27074B1E00D0FC7B /* MenuAPI.swift */,
+				F44777FA27074B1E00D0FC7B /* TwitterAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -378,7 +378,7 @@
 				F44779642707563100D0FC7B /* TweetsFeedViewController.swift in Sources */,
 				F447795C27074EFC00D0FC7B /* NSNotification+Extensions.swift in Sources */,
 				F447795F2707501C00D0FC7B /* UserIDResponse.swift in Sources */,
-				F447788327074B1E00D0FC7B /* MenuAPI.swift in Sources */,
+				F447788327074B1E00D0FC7B /* TwitterAPI.swift in Sources */,
 				F4477961270755BF00D0FC7B /* TweetsFeedViewModel.swift in Sources */,
 				F447789227074B1E00D0FC7B /* TwitterService.swift in Sources */,
 			);
@@ -556,7 +556,6 @@
 				INFOPLIST_FILE = TweetFeelings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -584,7 +583,6 @@
 				INFOPLIST_FILE = TweetFeelings/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

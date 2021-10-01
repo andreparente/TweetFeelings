@@ -18,9 +18,14 @@ public enum TwitterAPI: Route {
         "https://api.twitter.com/2/"
     }
     
-    func urlRequest() -> URLRequest? {
-        guard let url = URL(string: baseURL+endpoint) else { return nil }
-        return URLRequest(url: url)
+    private var bearerToken: String {
+        "AAAAAAAAAAAAAAAAAAAAAP0bUQEAAAAAO2meJd1yCGIPwI7VTqioL88Jqus%3DMmxgBHyOlhxCbJvOu3MWJkZA6EERNzviJrj9Jzf7E7RdBiu4BK"
     }
     
+    var urlRequest: URLRequest? {
+        guard let url = URL(string: baseURL+endpoint) else { return nil }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        return urlRequest
+    }
 }

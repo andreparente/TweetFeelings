@@ -7,7 +7,7 @@ public enum ErrorType: Error {
 }
 
 protocol Route {
-    func urlRequest() -> URLRequest?
+    var urlRequest: URLRequest? { get }
 }
 
 enum Result<T> {
@@ -16,9 +16,9 @@ enum Result<T> {
     
     func get() -> Any {
         switch self {
-        case .success(let value):
+        case let .success(value):
             return value
-        case .error(let error):
+        case let .error(error):
             return error
         }
     }

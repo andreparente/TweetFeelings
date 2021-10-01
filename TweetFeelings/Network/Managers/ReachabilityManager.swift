@@ -39,7 +39,7 @@ class ReachabilityManager {
         if
             let reachability = note.object as? Reachability,
             let connectionHandler = connectionHandler {
-                connectionHandler(reachability.connection != .none)
+            connectionHandler(reachability.connection != .unavailable)
         }
     }
 }

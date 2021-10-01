@@ -9,7 +9,7 @@ class NetworkManager: NetworkManagerProtocol {
     public init() {}
     
     func call(route: Route, completion: @escaping (Result<Data>) -> Void) {
-        if let urlRequest = route.urlRequest() {
+        if let urlRequest = route.urlRequest {
             session.dataTask(with: urlRequest) { data, _, error in
                 if let data = data {
                     completion(.success(data))

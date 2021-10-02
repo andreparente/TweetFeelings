@@ -12,7 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupProject() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewModel = TweetsFeedViewModel(service: TwitterService(networkManager: networkManager))
+        let feedService = TwitterService(networkManager: networkManager)
+        let viewModel = TweetsFeedViewModel(service: feedService)
         let feedViewController = TweetsFeedViewController(viewModel: viewModel)
         viewModel.controllerDelegate = feedViewController
         window?.rootViewController = feedViewController

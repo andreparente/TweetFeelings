@@ -1,8 +1,8 @@
 import Foundation
 
 protocol TwitterServiceInterface {
-    func fetchUserIDBy(username: String, completion: @escaping (UserIDResponse?, Error?) -> Void)
-    func fetchTweetsFrom(userID: String, completion: @escaping ([Tweet]?, Error?) -> Void)
+    func fetchUserIDBy(username: String, completion: @escaping (UserResponseProtocol?, Error?) -> Void)
+    func fetchTweetsFrom(userID: String, completion: @escaping ([TweetProtocol]?, Error?) -> Void)
     func analyze(text: String, completion: @escaping (String?, Error?) -> Void)
 }
 
@@ -14,7 +14,7 @@ class TwitterService: TwitterServiceInterface {
         self.networkManager = networkManager
     }
     
-    func fetchUserIDBy(username: String, completion: @escaping (UserIDResponse?, Error?) -> Void) {
+    func fetchUserIDBy(username: String, completion: @escaping (UserResponseProtocol?, Error?) -> Void) {
         networkManager.call(route: TwitterAPI.getUserBy(username: username)) { result in
             switch result {
             case let .error(errorData):
@@ -22,7 +22,7 @@ class TwitterService: TwitterServiceInterface {
                 completion(nil, errorData)
             case let .success(data):
                 do {
-                    let userID = try JSONDecoder().decode(UserIDResponse.self, from: data)
+                    let userID = try JSONDecoder().decode(UserResponse.self, from: data)
                     completion(userID, nil)
                 } catch {
                     completion(nil, ErrorType.parsing)
@@ -31,7 +31,7 @@ class TwitterService: TwitterServiceInterface {
         }
     }
     
-    func fetchTweetsFrom(userID: String, completion: @escaping ([Tweet]?, Error?) -> Void) {
+    func fetchTweetsFrom(userID: String, completion: @escaping ([TweetProtocol]?, Error?) -> Void) {
         networkManager.call(route: TwitterAPI.getTweetsBy(id: userID)) { result in
             switch result {
             case let .error(errorData):

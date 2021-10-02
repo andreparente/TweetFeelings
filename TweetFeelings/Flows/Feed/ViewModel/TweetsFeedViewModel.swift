@@ -3,6 +3,7 @@ import Foundation
 protocol TweetsFeedViewModelInterface: AnyObject {
     func fetchTweetsFrom(username: String)
     func analyzeText(at index: Int)
+    
     //MARK: TableView Variants
     var numberOfTweets: Int { get }
     func tweet(at index: Int) -> String?
@@ -11,7 +12,7 @@ protocol TweetsFeedViewModelInterface: AnyObject {
 class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     var service: TwitterServiceInterface
     var controllerDelegate: TweetsFeedViewControllerInterface?
-    private var tweets: [Tweet] = [] {
+    private var tweets: [TweetProtocol] = [] {
         didSet {
             controllerDelegate?.updateFeed()
         }
@@ -22,26 +23,25 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     }
     
     func fetchTweetsFrom(username: String) {
-        service.fetchUserIDBy(username: username) { userResponse, error in
+        service.fetchUserIDBy(username: username) { [weak self] userResponse, error in
             if let user = userResponse {
-                print(user.data.id)
-                self.fetchTweetsFrom(user.data.id)
+                self?.fetchTweetsFrom(user.data.id)
             } else if let error = error {
-                print(error)
+                self?.controllerDelegate?.showError(error.localizedDescription)
             }
         }
     }
     
     private func fetchTweetsFrom(_ id: String) {
-        self.service.fetchTweetsFrom(userID: id) { tweets, error in
+        self.service.fetchTweetsFrom(userID: id) { [weak self] tweets, error in
             if let tweets = tweets {
-                self.tweets = tweets
-                print(tweets)
+                self?.tweets = tweets
             } else if let error = error {
-                print(error)
+                self?.controllerDelegate?.showError(error.localizedDescription)
             }
         }
     }
+    
     var numberOfTweets: Int {
         tweets.count
     }
@@ -51,8 +51,12 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     }
     
     func analyzeText(at index: Int) {
-        service.analyze(text: tweets.element(at: index)?.text ?? "") { sentimentText, error in
-            self.controllerDelegate?.showSentiment(sentimentText ?? error?.localizedDescription ?? "")
+        service.analyze(text: tweets.element(at: index)?.text ?? "") { [weak self] sentimentText, error in
+            if let text = sentimentText {
+                self?.controllerDelegate?.showSentiment(text)
+            } else if let error = error {
+                self?.controllerDelegate?.showError(error.localizedDescription)
+            }
         }
     }
 }

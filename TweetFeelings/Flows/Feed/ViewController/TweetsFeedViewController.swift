@@ -3,6 +3,7 @@ import UIKit
 protocol TweetsFeedViewControllerInterface: AnyObject {
     func updateFeed()
     func showSentiment(_ text: String)
+    func showError(_ description: String)
 }
 
 class TweetsFeedViewController: UIViewController  {
@@ -26,10 +27,6 @@ class TweetsFeedViewController: UIViewController  {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }
 
 extension TweetsFeedViewController: FeedViewDelegate {
@@ -37,7 +34,7 @@ extension TweetsFeedViewController: FeedViewDelegate {
         if let username = username {
             viewModel.fetchTweetsFrom(username: username)
         } else {
-            //search vazia
+            showAlert(title: "Aviso", subtitle: "Busca vazia, digite ao menos um caractere")
         }
     }
 }
@@ -59,22 +56,29 @@ extension TweetsFeedViewController: UITableViewDataSource {
 extension TweetsFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //TODO: SHOW EMOTION FOR TEXT
         viewModel.analyzeText(at: indexPath.row)
     }
 }
 
 extension TweetsFeedViewController: TweetsFeedViewControllerInterface {
     func updateFeed() {
-        DispatchQueue.main.async { [weak self] in
-            self?.feedView.reloadFeed()
+        DispatchQueue.main.async {
+            self.feedView.reloadFeed()
         }
     }
     
     func showSentiment(_ text: String) {
+        showAlert(title: "Sentimento do tweet", subtitle: text)
+    }
+    
+    func showError(_ description: String) {
+        showAlert(title: "Erro", subtitle: description)
+    }
+    
+    private func showAlert(title: String, subtitle: String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Sentimento do tweet",
-                                          message: text,
+            let alert = UIAlertController(title: title,
+                                          message: subtitle,
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK",
                                           style: .cancel,

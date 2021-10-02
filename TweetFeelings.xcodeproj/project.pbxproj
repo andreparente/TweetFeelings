@@ -202,11 +202,31 @@
 			path = Twitter;
 			sourceTree = "<group>";
 		};
+		F405AEC52708B46300DE3834 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F447795D27074FF700D0FC7B /* Twitter */,
+				F405AEB12707A7DE00DE3834 /* Google */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F405AEC62708B48700DE3834 /* Model-Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F405AEBE2708AEBD00DE3834 /* Twitter */,
+				F405AEB72708AD0900DE3834 /* Google */,
+			);
+			path = "Model-Protocols";
+			sourceTree = "<group>";
+		};
 		F43C2AFE270780C600B6B7C0 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				F43C2AFF270780D200B6B7C0 /* ViewCodable.swift */,
+				F405AEC62708B48700DE3834 /* Model-Protocols */,
+				F447795827074D5700D0FC7B /* NetworkManagerProtocol.swift */,
 				F405AEA627078CA300DE3834 /* Reusable.swift */,
+				F43C2AFF270780D200B6B7C0 /* ViewCodable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -237,6 +257,7 @@
 				F405AEA327078BAA00DE3834 /* Assets */,
 				F447795A27074EE100D0FC7B /* Extensions */,
 				F405AEA027078B7000DE3834 /* Flows */,
+				F405AEC52708B46300DE3834 /* Models */,
 				F447776927074ABC00D0FC7B /* Network */,
 				F43C2AFE270780C600B6B7C0 /* Protocols */,
 			);
@@ -264,21 +285,10 @@
 			isa = PBXGroup;
 			children = (
 				F44777F627074B1E00D0FC7B /* API */,
-				F447777B27074B1D00D0FC7B /* Models */,
 				F447777227074B1D00D0FC7B /* NetworkManager.swift */,
-				F447789727074D1500D0FC7B /* Protocols */,
 				F44777FD27074B1E00D0FC7B /* Services */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		F447777B27074B1D00D0FC7B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				F405AEB12707A7DE00DE3834 /* Google */,
-				F447795D27074FF700D0FC7B /* Twitter */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		F44777F627074B1E00D0FC7B /* API */ = {
@@ -296,16 +306,6 @@
 				F447780C27074B1E00D0FC7B /* TwitterService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		F447789727074D1500D0FC7B /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				F405AEBE2708AEBD00DE3834 /* Twitter */,
-				F405AEB72708AD0900DE3834 /* Google */,
-				F447795827074D5700D0FC7B /* NetworkManagerProtocol.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		F447795A27074EE100D0FC7B /* Extensions */ = {

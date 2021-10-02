@@ -1,7 +1,7 @@
 import UIKit
 
 protocol FeedViewDelegate: AnyObject {
-    func didSearch(for username: String?)
+    func didSearch(for username: String)
 }
 
 class FeedView: UIView {
@@ -68,6 +68,6 @@ extension FeedView: ViewCodable {
 
 extension FeedView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        delegate?.didSearch(for: searchBar.text)
+        delegate?.didSearch(for: searchBar.text ?? "")
     }
 }

@@ -30,8 +30,8 @@ class TweetsFeedViewController: UIViewController  {
 }
 
 extension TweetsFeedViewController: FeedViewDelegate {
-    func didSearch(for username: String?) {
-        if let username = username {
+    func didSearch(for username: String) {
+        if !username.isEmpty {
             viewModel.fetchTweetsFrom(username: username)
         } else {
             showAlert(title: "Aviso", subtitle: "Busca vazia, digite ao menos um caractere")

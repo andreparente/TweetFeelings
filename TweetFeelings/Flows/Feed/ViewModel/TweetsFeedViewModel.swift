@@ -27,6 +27,7 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
             if let user = userResponse {
                 self?.fetchTweetsFrom(user.data.id)
             } else if let error = error {
+                self?.tweets.removeAll()
                 self?.controllerDelegate?.showError(error.localizedDescription)
             }
         }
@@ -37,6 +38,7 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
             if let tweets = tweets {
                 self?.tweets = tweets
             } else if let error = error {
+                self?.tweets.removeAll()
                 self?.controllerDelegate?.showError(error.localizedDescription)
             }
         }

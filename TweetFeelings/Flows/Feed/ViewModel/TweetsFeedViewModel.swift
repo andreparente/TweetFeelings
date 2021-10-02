@@ -51,6 +51,8 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     }
     
     func analyzeText(at index: Int) {
-        service.analyze(text: tweets.element(at: index)?.text ?? "")
+        service.analyze(text: tweets.element(at: index)?.text ?? "") { sentimentText, error in
+            self.controllerDelegate?.showSentiment(sentimentText ?? error?.localizedDescription ?? "")
+        }
     }
 }

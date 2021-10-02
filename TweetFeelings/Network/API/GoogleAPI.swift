@@ -1,27 +1,5 @@
-//
-//  GoogleAPI.swift
-//  TweetFeelings
-//
-//  Created by Andre Parente on 01/10/21.
-//
-
 import Foundation
-//ANALISAR TEXTO (POST): https://language.googleapis.com/v1/documents:analyzeSentiment?key=AIzaSyBH7koCAq2AVKy-9AXEBe876fA0bpCYWJs
 
-
-//BODY DO POST DE ANALISAR TEXTO:
-/*{
-"document": {
-   "type": PLAIN_TEXT,
-   "language": "pt_BR",
-   "content": string,
-   "gcsContentUri": string
-},
-"encodingType": UTF8
-}*/
-
-
-//CHAVE DE API GOOGLE AIzaSyBH7koCAq2AVKy-9AXEBe876fA0bpCYWJs
 public enum GoogleAPI: Route {
     
     case analyze(text: String)
@@ -35,11 +13,16 @@ public enum GoogleAPI: Route {
     }
 
     private var body: Data? {
+        
         switch self {
         case let .analyze(text):
-            var json = [String: Any]()
-            json["encodingType"] = "UTF8"
-            json["document"] = ["type": "PLAIN_TEXT", "language": "pt_BR", "content": text]
+            let json = [
+                "document":[
+                    "type":"PLAIN_TEXT",
+                    "content":"\(text)"
+                ],
+                "encodingType":"UTF8"
+            ] as [String : Any]
             return try? JSONSerialization.data(withJSONObject: json)
         }
         
@@ -49,6 +32,7 @@ public enum GoogleAPI: Route {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = body
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return urlRequest
     }
 }

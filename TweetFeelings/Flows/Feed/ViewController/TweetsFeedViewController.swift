@@ -2,6 +2,7 @@ import UIKit
 
 protocol TweetsFeedViewControllerInterface: AnyObject {
     func updateFeed()
+    func showSentiment(_ text: String)
 }
 
 class TweetsFeedViewController: UIViewController  {
@@ -67,6 +68,18 @@ extension TweetsFeedViewController: TweetsFeedViewControllerInterface {
     func updateFeed() {
         DispatchQueue.main.async { [weak self] in
             self?.feedView.reloadFeed()
+        }
+    }
+    
+    func showSentiment(_ text: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Sentimento do tweet",
+                                          message: text,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK",
+                                          style: .cancel,
+                                          handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

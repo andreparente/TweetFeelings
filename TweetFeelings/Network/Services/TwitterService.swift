@@ -3,7 +3,7 @@ import Foundation
 protocol TwitterServiceInterface {
     func fetchUserIDBy(username: String, completion: @escaping (UserIDResponse?, Error?) -> Void)
     func fetchTweetsFrom(userID: String, completion: @escaping ([Tweet]?, Error?) -> Void)
-    func analyze(text: String)
+    func analyze(text: String, completion: @escaping (String?, Error?) -> Void)
 }
 
 class TwitterService: TwitterServiceInterface {
@@ -48,9 +48,20 @@ class TwitterService: TwitterServiceInterface {
         }
     }
     
-    func analyze(text: String) {
+    func analyze(text: String, completion: @escaping (String?, Error?) -> Void) {
         networkManager.call(route: GoogleAPI.analyze(text: text)) { result in
-            print(result)
+            switch result {
+            case let .error(errorData):
+                print(errorData)
+                completion(nil, errorData)
+            case let .success(data):
+                do {
+                    let sentiment = try JSONDecoder().decode(SentimentResponse.self, from: data)
+                    completion(sentiment.documentSentiment.sentiment.emoji, nil)
+                } catch {
+                    completion(nil, ErrorType.parsing)
+                }
+            }
         }
     }
 }

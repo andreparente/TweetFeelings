@@ -69,5 +69,9 @@ extension FeedView: ViewCodable {
 extension FeedView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         delegate?.didSearch(for: searchBar.text ?? "")
+        searchBar.endEditing(true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }

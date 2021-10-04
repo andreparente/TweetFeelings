@@ -14,3 +14,6 @@ Trabalho com módulos:
 
 Tento sempre utilizar protocol-oriented programming para facilitar o entendimento, a reusabilidade, modularização e testabilidade do sistema.
 
+Para os testes, trabalhei em cima do snapshotTesting (lib terceira para testes de UI), e testes unitários na camada da ViewModel. Mockando todos os modelos e serviços.
+
+quaisquer dúvidas favor abrir Issue.

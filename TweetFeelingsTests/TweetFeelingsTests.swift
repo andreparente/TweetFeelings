@@ -2,11 +2,10 @@
 //  TweetFeelingsTests.swift
 //  TweetFeelingsTests
 //
-//  Created by Andre Parente on 01/10/21.
+//  Created by Andre Parente on 04/10/21.
 //
 
 import XCTest
-@testable import TweetFeelings
 
 class TweetFeelingsTests: XCTestCase {
 
@@ -25,7 +24,7 @@ class TweetFeelingsTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }

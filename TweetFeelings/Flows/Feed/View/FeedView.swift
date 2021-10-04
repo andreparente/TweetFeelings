@@ -24,8 +24,8 @@ class FeedView: UIView {
     }()
     
     init(frame: CGRect = .zero,
-         feedDelegate: UITableViewDelegate,
-         feedDataSource: UITableViewDataSource) {
+         feedDelegate: UITableViewDelegate?,
+         feedDataSource: UITableViewDataSource?) {
         super.init(frame: frame)
         tableView.delegate = feedDelegate
         tableView.dataSource = feedDataSource

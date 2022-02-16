@@ -10,7 +10,7 @@ Trabalho com módulos:
 - Service (para cada feature/flow, camada fica responsável por fazer os requests e tratar o retorno);
 - ViewModel (fica responsável pelas regras de negócio, cada viewModel tem seu serviço, e ela faz todos os tratamentos necessários conforme regras de negócio)
 - ViewController;
-- View (usando aqui o view-codable para uma maior manutenabilidade).
+- View (usando aqui o design pattern view-code para uma maior manutenabilidade e para evitar de trabalhar com arquivos .xib em equipe e evitar conflitos complicados).
 
 Tento sempre utilizar protocol-oriented programming para facilitar o entendimento, a reusabilidade, modularização e testabilidade do sistema.
 

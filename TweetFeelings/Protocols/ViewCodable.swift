@@ -1,5 +1,3 @@
-import SnapKit
-
 protocol ViewCodable {
     func setup()
     func setupViews()
@@ -8,7 +6,6 @@ protocol ViewCodable {
 }
 
 extension ViewCodable {
-
     func setup() {
         setupViews()
         setupAnchors()
@@ -16,5 +13,4 @@ extension ViewCodable {
     }
     
     func setupLayouts() {}
-
 }

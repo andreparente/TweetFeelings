@@ -34,7 +34,8 @@ extension TweetsFeedViewController: FeedViewDelegate {
         if !username.isEmpty {
             viewModel.fetchTweetsFrom(username: username)
         } else {
-            showAlert(title: "Aviso", subtitle: "Busca vazia, digite ao menos um caractere")
+            showAlert(title: "Aviso",
+                      subtitle: "Busca vazia, digite ao menos um caractere")
         }
     }
 }
@@ -68,22 +69,15 @@ extension TweetsFeedViewController: TweetsFeedViewControllerInterface {
     }
     
     func showSentiment(_ text: String) {
-        showAlert(title: "Sentimento do tweet", subtitle: text)
+        DispatchQueue.main.async {
+            self.showAlert(title: "Sentimento do tweet", subtitle: text)
+        }
+    
     }
     
     func showError(_ description: String) {
-        showAlert(title: "Erro", subtitle: description)
-    }
-    
-    private func showAlert(title: String, subtitle: String) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: title,
-                                          message: subtitle,
-                                          preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK",
-                                          style: .cancel,
-                                          handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showAlert(title: "Erro", subtitle: description)
         }
     }
 }

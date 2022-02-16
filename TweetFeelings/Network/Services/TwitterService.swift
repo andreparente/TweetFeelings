@@ -1,9 +1,12 @@
 import Foundation
 
 protocol TwitterServiceInterface {
-    func fetchUserIDBy(username: String, completion: @escaping (UserResponseProtocol?, Error?) -> Void)
-    func fetchTweetsFrom(userID: String, completion: @escaping ([TweetProtocol]?, Error?) -> Void)
-    func analyze(text: String, completion: @escaping (String?, Error?) -> Void)
+    func fetchUserIDBy(username: String,
+                       completion: @escaping (UserResponseProtocol?, Error?) -> Void)
+    func fetchTweetsFrom(userID: String,
+                         completion: @escaping ([TweetProtocol]?, Error?) -> Void)
+    func analyze(text: String,
+                 completion: @escaping (String?, Error?) -> Void)
 }
 
 class TwitterService: TwitterServiceInterface {
@@ -18,7 +21,6 @@ class TwitterService: TwitterServiceInterface {
         networkManager.call(route: TwitterAPI.getUserBy(username: username)) { result in
             switch result {
             case let .error(errorData):
-                print(errorData)
                 completion(nil, errorData)
             case let .success(data):
                 do {
@@ -35,7 +37,6 @@ class TwitterService: TwitterServiceInterface {
         networkManager.call(route: TwitterAPI.getTweetsBy(id: userID)) { result in
             switch result {
             case let .error(errorData):
-                print(errorData)
                 completion(nil, errorData)
             case let .success(data):
                 do {
@@ -52,7 +53,6 @@ class TwitterService: TwitterServiceInterface {
         networkManager.call(route: GoogleAPI.analyze(text: text)) { result in
             switch result {
             case let .error(errorData):
-                print(errorData)
                 completion(nil, errorData)
             case let .success(data):
                 do {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A792F3827BDBD1300DFBAF2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A792F3727BDBD1300DFBAF2 /* UIViewController+Extensions.swift */; };
 		F405AEA527078BF600DE3834 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEA427078BF600DE3834 /* TweetCell.swift */; };
 		F405AEA727078CA300DE3834 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEA627078CA300DE3834 /* Reusable.swift */; };
 		F405AEA927078D8D00DE3834 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F405AEA827078D8D00DE3834 /* Tweet.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A792F3727BDBD1300DFBAF2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		F405AEA427078BF600DE3834 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		F405AEA627078CA300DE3834 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		F405AEA827078D8D00DE3834 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			children = (
 				F447795B27074EFC00D0FC7B /* NSNotification+Extensions.swift */,
 				F405AEAD270792EB00DE3834 /* Collection+Extensions.swift */,
+				8A792F3727BDBD1300DFBAF2 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 			files = (
 				F405AEC22708AFE300DE3834 /* TwitterUserProtocol.swift in Sources */,
 				F447795927074D5700D0FC7B /* NetworkManagerProtocol.swift in Sources */,
+				8A792F3827BDBD1300DFBAF2 /* UIViewController+Extensions.swift in Sources */,
 				F405AEA527078BF600DE3834 /* TweetCell.swift in Sources */,
 				F447773A2707414600D0FC7B /* AppDelegate.swift in Sources */,
 				F405AEC02708AFBD00DE3834 /* UserResponseProtocol.swift in Sources */,

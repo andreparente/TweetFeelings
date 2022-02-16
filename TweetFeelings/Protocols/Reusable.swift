@@ -5,9 +5,7 @@ protocol Reusable {
 }
 
 extension Reusable where Self: UIView {
-    
     static var identifier: String {
         return NSStringFromClass(self)
     }
-
 }

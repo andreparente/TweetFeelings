@@ -1,6 +1,13 @@
 @testable import TweetFeelings
+import Foundation
 
 struct TwitterUserMock: TwitterUserProtocol {
+    var profileImageUrl: URL? {
+        URL(string: profileImageString)
+    }
+    var profileImageString: String
+    var isVerified: Bool
+    
     var id: String
     var name: String
     var username: String
@@ -9,6 +16,8 @@ struct TwitterUserMock: TwitterUserProtocol {
         id = "11"
         name = "Andre Parente"
         username = "andreparente"
+        isVerified = true
+        profileImageString = "profileImage.jpeg"
     }
 }
 

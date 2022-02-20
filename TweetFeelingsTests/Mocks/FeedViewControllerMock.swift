@@ -4,7 +4,6 @@ import UIKit
 class FeedViewControllerMock: UIViewController, TweetsFeedViewControllerInterface {
     
     var didUpdateFeed: Bool = false
-    var didShowSentiment: Bool = false
     var didShowError: Bool = false
     
     var viewModel: TweetsFeedViewModelInterface
@@ -21,11 +20,7 @@ class FeedViewControllerMock: UIViewController, TweetsFeedViewControllerInterfac
     func updateFeed() {
         didUpdateFeed = true
     }
-    
-    func showSentiment(_ text: String) {
-        didShowSentiment = true
-    }
-    
+
     func showError(_ description: String) {
         didShowError = true
     }

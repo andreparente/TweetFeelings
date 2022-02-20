@@ -6,6 +6,22 @@ public enum ErrorType: Error {
     case missingUrl
 }
 
+extension ErrorType: CustomStringConvertible, LocalizedError {
+    public var description: String {
+        switch self {
+        case .parsing:
+            return "Não foi possível parsear o json de resposta"
+        case .fetching:
+            return "Erro no request"
+        case .missingUrl:
+            return "URL Inválida"
+        }
+    }
+    public var errorDescription: String? {
+        description
+    }
+}
+
 protocol Route {
     var urlRequest: URLRequest? { get }
 }

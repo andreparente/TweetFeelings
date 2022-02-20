@@ -9,14 +9,11 @@ struct TwitterError: Codable {
     var title: String?
 }
 
-extension TwitterError: Error, CustomStringConvertible {
+extension TwitterError: Error, CustomStringConvertible, LocalizedError {
     public var description: String {
         detail ?? "Não foi possível achar o usuário, tente novamente mais tarde"
     }
-}
-
-extension TwitterError: LocalizedError {
     public var errorDescription: String? {
-        detail ?? "Não foi possível achar o usuário, tente novamente mais tarde"
+        description
     }
 }

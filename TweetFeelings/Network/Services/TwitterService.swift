@@ -5,19 +5,18 @@ protocol TwitterServiceInterface {
                        completion: @escaping (UserResponseProtocol?, Error?) -> Void)
     func fetchTweetsFrom(userID: String,
                          completion: @escaping ([TweetProtocol]?, Error?) -> Void)
-    func analyze(text: String,
-                 completion: @escaping (String?, Error?) -> Void)
 }
 
 class TwitterService: TwitterServiceInterface {
 
-    let networkManager: NetworkManager
+    let networkManager: NetworkManagerProtocol
     
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
     }
     
-    func fetchUserIDBy(username: String, completion: @escaping (UserResponseProtocol?, Error?) -> Void) {
+    func fetchUserIDBy(username: String,
+                       completion: @escaping (UserResponseProtocol?, Error?) -> Void) {
         networkManager.call(route: TwitterAPI.getUserBy(username: username)) { result in
             switch result {
             case let .error(errorData):
@@ -27,13 +26,20 @@ class TwitterService: TwitterServiceInterface {
                     let userID = try JSONDecoder().decode(UserResponse.self, from: data)
                     completion(userID, nil)
                 } catch {
-                    completion(nil, ErrorType.parsing)
+                    do {
+                        let errorResponse = try JSONDecoder().decode(UserErrorResponse.self, from: data)
+                        completion(nil, errorResponse.errors.first)
+                    }
+                    catch {
+                        completion(nil, ErrorType.parsing)
+                    }
                 }
             }
         }
     }
     
-    func fetchTweetsFrom(userID: String, completion: @escaping ([TweetProtocol]?, Error?) -> Void) {
+    func fetchTweetsFrom(userID: String,
+                         completion: @escaping ([TweetProtocol]?, Error?) -> Void) {
         networkManager.call(route: TwitterAPI.getTweetsBy(id: userID)) { result in
             switch result {
             case let .error(errorData):
@@ -42,22 +48,6 @@ class TwitterService: TwitterServiceInterface {
                 do {
                     let tweets = try JSONDecoder().decode(TweetsResponse.self, from: data)
                     completion(tweets.data, nil)
-                } catch {
-                    completion(nil, ErrorType.parsing)
-                }
-            }
-        }
-    }
-    
-    func analyze(text: String, completion: @escaping (String?, Error?) -> Void) {
-        networkManager.call(route: GoogleAPI.analyze(text: text)) { result in
-            switch result {
-            case let .error(errorData):
-                completion(nil, errorData)
-            case let .success(data):
-                do {
-                    let sentiment = try JSONDecoder().decode(SentimentResponse.self, from: data)
-                    completion(sentiment.documentSentiment.sentiment.emoji, nil)
                 } catch {
                     completion(nil, ErrorType.parsing)
                 }

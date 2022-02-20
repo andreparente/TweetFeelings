@@ -13,13 +13,12 @@ class NetworkManager: NetworkManagerProtocol {
             session.dataTask(with: urlRequest) { data, _, error in
                 if let data = data {
                     completion(.success(data))
-                    return
-                }
-                
-                if let error = error {
+                } else if let error = error {
                     completion(.error(error))
-                    return
+                } else {
+                    completion(.error(ErrorType.fetching))
                 }
+                return
             }.resume()
         }
     }

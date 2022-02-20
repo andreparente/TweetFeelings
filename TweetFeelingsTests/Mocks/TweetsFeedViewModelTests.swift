@@ -29,20 +29,7 @@ class TweetsFeedViewModelTests: XCTestCase {
                        tweetsMock.tweets[randomIndex].text)
         XCTAssertTrue(controllerMock.didUpdateFeed)
     }
-    
-    func testAnalyzeTweet() {
-        let tweetsMock = TweetsMock()
-        serviceMock = ServiceMock(fetchUserCase: .success,
-                                  fetchTweetsFromUserCase: .success)
-        viewModel = TweetsFeedViewModel(service: serviceMock)
-        controllerMock = FeedViewControllerMock(viewModel: viewModel)
-        viewModel.controllerDelegate = controllerMock
-        viewModel.fetchTweetsFrom(username: "teste")
-        let randomIndex = Int.random(in: 0..<tweetsMock.maxIndex)
-        viewModel.analyzeText(at: randomIndex)
-        XCTAssertTrue(controllerMock.didShowSentiment)
-    }
-    
+
     func testErrorOnFetchUser() {
         let tweetsMock = TweetsMock()
         serviceMock = ServiceMock(fetchUserCase: .error,
@@ -52,7 +39,6 @@ class TweetsFeedViewModelTests: XCTestCase {
         viewModel.controllerDelegate = controllerMock
         viewModel.fetchTweetsFrom(username: "teste")
         let randomIndex = Int.random(in: 0..<tweetsMock.maxIndex)
-        viewModel.analyzeText(at: randomIndex)
         XCTAssertTrue(controllerMock.didShowError)
     }
     
@@ -65,7 +51,6 @@ class TweetsFeedViewModelTests: XCTestCase {
         viewModel.controllerDelegate = controllerMock
         viewModel.fetchTweetsFrom(username: "teste")
         let randomIndex = Int.random(in: 0..<tweetsMock.maxIndex)
-        viewModel.analyzeText(at: randomIndex)
         XCTAssertTrue(controllerMock.didShowError)
     }
 }

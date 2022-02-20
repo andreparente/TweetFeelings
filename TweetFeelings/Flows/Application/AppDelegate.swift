@@ -4,6 +4,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var networkManager = NetworkManager()
+    var coordinator: MainCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupProject()
@@ -11,12 +12,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupProject() {
+        let navController = UINavigationController()
+        coordinator = MainCoordinator(networkManager: networkManager,
+                                      navigationController: navController)
+        coordinator?.start()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let feedService = TwitterService(networkManager: networkManager)
-        let viewModel = TweetsFeedViewModel(service: feedService)
-        let feedViewController = TweetsFeedViewController(viewModel: viewModel)
-        viewModel.controllerDelegate = feedViewController
-        window?.rootViewController = feedViewController
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
 }

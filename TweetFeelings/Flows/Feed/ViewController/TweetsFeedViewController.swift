@@ -2,11 +2,13 @@ import UIKit
 
 protocol TweetsFeedViewControllerInterface: AnyObject {
     func updateFeed()
-    func showSentiment(_ text: String)
     func showError(_ description: String)
 }
 
-class TweetsFeedViewController: UIViewController  {
+class TweetsFeedViewController: UIViewController, HeaderProtocol  {
+    var headerType: HeaderType {
+        .title(text: "Tweets", logo: nil)
+    }
     
     private var viewModel: TweetsFeedViewModelInterface
     private lazy var feedView: FeedView = {
@@ -27,6 +29,11 @@ class TweetsFeedViewController: UIViewController  {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupHeader()
+    }
 }
 
 extension TweetsFeedViewController: FeedViewDelegate {
@@ -41,6 +48,10 @@ extension TweetsFeedViewController: FeedViewDelegate {
 }
 
 extension TweetsFeedViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.numberOfTweets > 0 ? 1 : 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfTweets
     }
@@ -52,12 +63,19 @@ extension TweetsFeedViewController: UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier) as! ProfileHeaderView
+        if let data = viewModel.profileData {
+            ProfileHeaderViewBuilder(header: header).build(with: data)
+        }
+        return header
+    }
 }
 
 extension TweetsFeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.analyzeText(at: indexPath.row)
     }
 }
 
@@ -67,14 +85,7 @@ extension TweetsFeedViewController: TweetsFeedViewControllerInterface {
             self.feedView.reloadFeed()
         }
     }
-    
-    func showSentiment(_ text: String) {
-        DispatchQueue.main.async {
-            self.showAlert(title: "Sentimento do tweet", subtitle: text)
-        }
-    
-    }
-    
+
     func showError(_ description: String) {
         DispatchQueue.main.async {
             self.showAlert(title: "Erro", subtitle: description)

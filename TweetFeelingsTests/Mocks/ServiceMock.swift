@@ -30,10 +30,6 @@ class ServiceMock: TwitterServiceInterface {
             completion(nil, ErrorType.parsing)
         }
     }
-    
-    func analyze(text: String, completion: @escaping (String?, Error?) -> Void) {
-        completion(Sentiment(score).emoji, nil)
-    }
 }
 
 enum FetchUserByIDCase {

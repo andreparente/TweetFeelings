@@ -8,7 +8,7 @@ public enum TwitterAPI: Route {
     var endpoint: String {
         switch self {
         case let .getUserBy(username):
-            return "users/by/username/\(username)"
+            return "users/by/username/\(username)?user.fields=profile_image_url,verified"
         case let .getTweetsBy(id):
             return "users/\(id)/tweets"
         }

@@ -2,16 +2,19 @@ import Foundation
 
 protocol TweetsFeedViewModelInterface: AnyObject {
     func fetchTweetsFrom(username: String)
-    func analyzeText(at index: Int)
     
     //MARK: TableView Variants
     var numberOfTweets: Int { get }
     func tweet(at index: Int) -> String?
+    
+    var profileData: TwitterUserProtocol? { get set }
 }
 
 class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     var service: TwitterServiceInterface
     var controllerDelegate: TweetsFeedViewControllerInterface?
+    
+    var profileData: TwitterUserProtocol?
     private var tweets: [TweetProtocol] = [] {
         didSet {
             controllerDelegate?.updateFeed()
@@ -25,6 +28,7 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     func fetchTweetsFrom(username: String) {
         service.fetchUserIDBy(username: username) { [weak self] userResponse, error in
             if let user = userResponse {
+                self?.profileData = user.data
                 self?.fetchTweetsFrom(user.data.id)
             } else if let error = error {
                 self?.tweets.removeAll()
@@ -50,15 +54,5 @@ class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     
     func tweet(at index: Int) -> String? {
         tweets.element(at: index)?.text
-    }
-    
-    func analyzeText(at index: Int) {
-        service.analyze(text: tweets.element(at: index)?.text ?? "") { [weak self] sentimentText, error in
-            if let text = sentimentText {
-                self?.controllerDelegate?.showSentiment(text)
-            } else if let error = error {
-                self?.controllerDelegate?.showError(error.localizedDescription)
-            }
-        }
     }
 }

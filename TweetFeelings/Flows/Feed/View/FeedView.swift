@@ -13,7 +13,10 @@ class FeedView: UIView {
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.tableFooterView = UIView(frame: .zero)
-        tableView.register(TweetTableViewCell.self, forCellReuseIdentifier: TweetTableViewCell.identifier)
+        tableView.register(TweetTableViewCell.self,
+                           forCellReuseIdentifier: TweetTableViewCell.identifier)
+        tableView.register(ProfileHeaderView.self,
+                           forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
         return tableView
     }()
     

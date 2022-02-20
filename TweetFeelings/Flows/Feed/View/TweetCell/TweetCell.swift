@@ -1,8 +1,10 @@
+import SnapKit
 import UIKit
 
 protocol TweetTableViewCellProtocol: AnyObject {
     var tweetLabel: UILabel { get set }
 }
+
 public final class TweetTableViewCell: UITableViewCell, Reusable, TweetTableViewCellProtocol {
 
     lazy var tweetLabel: UILabel = {

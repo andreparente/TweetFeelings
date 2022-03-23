@@ -12,7 +12,7 @@ protocol TweetsFeedViewModelInterface: AnyObject {
 
 class TweetsFeedViewModel: TweetsFeedViewModelInterface {
     var service: TwitterServiceInterface
-    var controllerDelegate: TweetsFeedViewControllerInterface?
+    weak var controllerDelegate: TweetsFeedViewControllerInterface?
     
     var profileData: TwitterUserProtocol?
     private var tweets: [TweetProtocol] = [] {
